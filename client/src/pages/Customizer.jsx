@@ -3,7 +3,7 @@ import { useSnapshot } from "valtio";
 import state from "../store";
 import { motion } from "framer-motion";
 import { fadeAnimation, slideAnimation } from "../config/motion";
-import { EditorTabs } from "../config/constants";
+import { EditorTabs, FilterTabs } from "../config/constants";
 import { CustomButton, Tab } from "../components";
 
 const Customizer = () => {
@@ -35,6 +35,21 @@ const Customizer = () => {
               handleClick={() => (state.intro = true)}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />
+          </motion.div>
+
+          <motion.div
+            className="filtertabs-container"
+            {...slideAnimation("up")}
+          >
+            {FilterTabs.map((tab) => (
+              <Tab
+                key={tab.name}
+                tab={tab}
+                handleClick={() => {}}
+                isFilterTab
+                isActiveTab=""
+              />
+            ))}
           </motion.div>
         </>
       )}
